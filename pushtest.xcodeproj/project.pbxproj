@@ -44,6 +44,7 @@
 		747E85C21B7CB9A1004EDD7E /* pushtestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pushtestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		747E85C71B7CB9A1004EDD7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		747E85C81B7CB9A1004EDD7E /* pushtestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = pushtestTests.m; sourceTree = "<group>"; };
+		74C78EF21BB02B1500676EBF /* pushtest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = pushtest.entitlements; sourceTree = "<group>"; };
 		C3CC96D130192908BECF07F6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EB845550D9C0A6D294787734 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -98,6 +99,7 @@
 		747E85A81B7CB9A1004EDD7E /* pushtest */ = {
 			isa = PBXGroup;
 			children = (
+				74C78EF21BB02B1500676EBF /* pushtest.entitlements */,
 				747E85AD1B7CB9A1004EDD7E /* AppDelegate.h */,
 				747E85AE1B7CB9A1004EDD7E /* AppDelegate.m */,
 				747E85B31B7CB9A1004EDD7E /* ViewController.h */,
@@ -192,7 +194,7 @@
 		747E859E1B7CB9A1004EDD7E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Project J Ltd.";
 				TargetAttributes = {
 					747E85A51B7CB9A1004EDD7E = {
@@ -200,6 +202,12 @@
 						DevelopmentTeam = H38NXU2XDS;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.OMC = {
+								enabled = 0;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 						};
@@ -352,7 +360,9 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -396,6 +406,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -419,12 +430,15 @@
 			baseConfigurationReference = C3CC96D130192908BECF07F6 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = pushtest/pushtest.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = pushtest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_LIBTOOLFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.projectj.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "6ee7e225-c28b-4b4e-80ad-c46fb295403b";
 			};
 			name = Debug;
 		};
@@ -433,12 +447,15 @@
 			baseConfigurationReference = 09327AB7BA3F7CA41A032901 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = pushtest/pushtest.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = pushtest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_LIBTOOLFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.projectj.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "6ee7e225-c28b-4b4e-80ad-c46fb295403b";
 			};
 			name = Release;
 		};
@@ -456,6 +473,7 @@
 				);
 				INFOPLIST_FILE = pushtestTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.projectj.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pushtest.app/pushtest";
 			};
@@ -471,6 +489,7 @@
 				);
 				INFOPLIST_FILE = pushtestTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.projectj.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pushtest.app/pushtest";
 			};
